@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Chat from './pages/Chat';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import { AuthContext } from './context/AuthContext';
+import { ChatContextProvider } from './context/chatContext';
 
 function App() {
+  const { user } = useContext(AuthContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <ChatContextProvider user={user}>
+        <Routes>
+          <Route path='/' element={user ? <Navigate to="/chat" replace /> : <Login />} />
+          <Route path='/chat' element={user ? <Chat /> : <Navigate to="/" replace />} />
+          <Route path='/register' element={user ? <Navigate to="/chat" replace /> : <Register />} />
+          <Route path='*' element={<Navigate to="/" replace />} />
+        </Routes>
+      </ChatContextProvider>
+    </>
+  )
 }
 
-export default App;
+export default App
