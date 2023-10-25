@@ -3,6 +3,7 @@
 // findChat
 
 const db = require('./database');
+const { sanitizeAndValidate, sanitizeAndValidateArray } = require('../utils/validator and sanitizer/ValidatorAndSanitizer');
 
 const createChat = async (req, res) => {
     const { firstUser, secondUser } = req.body;

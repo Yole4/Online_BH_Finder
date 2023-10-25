@@ -2,6 +2,7 @@ const db = require('./database');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const validator = require('validator');
+const { sanitizeAndValidate, sanitizeAndValidateArray } = require('../utils/validator and sanitizer/ValidatorAndSanitizer');
 
 const createToken = (_id) => {
     const secretKey = "this is my secret key yole143";

@@ -26,7 +26,7 @@ function Chat() {
                 {userChats && (userChats.message).map((item, index) => {
                     return (
                         <div key={index}>
-                            <UserChat item = {item} user = {user} />
+                            <UserChat item = {item} user = {user} />     
                         </div>
                     )
                 })}
