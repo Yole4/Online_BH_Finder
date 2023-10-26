@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { AuthContext } from './context/AuthContext';
 import { ChatContextProvider } from './context/chatContext';
+import Header from './pages/admin/Header';
+import Sidebar from './pages/admin/Sidebar';
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -12,6 +14,8 @@ function App() {
   return (
     <>
       <ChatContextProvider user={user}>
+        <Header />
+        <Sidebar />
         <Routes>
           <Route path='/' element={user ? <Navigate to="/chat" replace /> : <Login />} />
           <Route path='/chat' element={user ? <Chat /> : <Navigate to="/" replace />} />
