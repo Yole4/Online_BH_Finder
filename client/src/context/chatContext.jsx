@@ -23,6 +23,7 @@ export const ChatContextProvider = ({children, user}) => {
                     return setErrorResponse(response);
                 }else{
                     setUserChats(response);
+                    //test
                 }
             }
         }
